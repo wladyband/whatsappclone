@@ -1,9 +1,11 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 
     id("com.google.dagger.hilt.android") version "2.42" apply false
     kotlin("kapt")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -72,10 +74,14 @@ dependencies {
     implementation("com.google.dagger:hilt-android-gradle-plugin:2.55")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.firebase:firebase-firestore:24.6.0")
+    implementation(libs.firebase.storage)
+
+
     kotlin("com.google.dagger:hilt-android-compiler:2.42")
 
     implementation ("io.coil-kt:coil-compose:1.3.2")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
 
 
 
