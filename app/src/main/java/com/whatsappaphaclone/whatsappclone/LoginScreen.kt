@@ -13,6 +13,6 @@ fun LoginScreen(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ){
-        Text(text = "Signup screen")
+        Text(text = "Login screen")
     }
 }
