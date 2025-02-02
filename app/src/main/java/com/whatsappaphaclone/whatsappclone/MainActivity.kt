@@ -19,6 +19,7 @@ import com.whatsappaphaclone.whatsappclone.ui.SingleChatScreen
 import com.whatsappaphaclone.whatsappclone.ui.SingleStatusScreen
 import com.whatsappaphaclone.whatsappclone.ui.StatusListScreen
 import com.whatsappaphaclone.whatsappclone.ui.theme.WhatsappCloneTheme
+import dagger.hilt.android.AndroidEntryPoint
 
 
 sealed class DestinationScreen(val route: String){
@@ -35,7 +36,7 @@ sealed class DestinationScreen(val route: String){
     }
 }
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
