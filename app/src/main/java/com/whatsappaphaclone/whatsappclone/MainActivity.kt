@@ -5,13 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -23,16 +19,16 @@ import com.whatsappaphaclone.whatsappclone.ui.SingleStatusScreen
 import com.whatsappaphaclone.whatsappclone.ui.theme.WhatsappCloneTheme
 
 
-sealed class DestinagionScreen(val route: String){
-    object Signup:      DestinagionScreen("signup")
-    object Login:       DestinagionScreen("login")
-    object Profile:     DestinagionScreen("profile")
-    object Chatlist:    DestinagionScreen("chatlist")
-    object SingleChat:  DestinagionScreen("singleChat/{chatId}"){
+sealed class DestinationScreen(val route: String){
+    object Signup:      DestinationScreen("signup")
+    object Login:       DestinationScreen("login")
+    object Profile:     DestinationScreen("profile")
+    object Chatlist:    DestinationScreen("chatlist")
+    object SingleChat:  DestinationScreen("singleChat/{chatId}"){
         fun createRoute(id: String)= "singleChat/$id"
     }
-    object StatusList:   DestinagionScreen("statusList")
-    object SingleStatus: DestinagionScreen("singleStatus/{statusId}"){
+    object StatusList:   DestinationScreen("statusList")
+    object SingleStatus: DestinationScreen("singleStatus/{statusId}"){
         fun createRoute(id: String) = "singleStatus/$id"
     }
 }
@@ -56,23 +52,23 @@ class MainActivity : ComponentActivity() {
 fun ChatAppNavigation(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = DestinagionScreen.Signup.route){
-        composable(DestinagionScreen.Signup.route){
+    NavHost(navController = navController, startDestination = DestinationScreen.Signup.route){
+        composable(DestinationScreen.Signup.route){
             SignupScreen()
         }
-        composable(DestinagionScreen.Login.route){
+        composable(DestinationScreen.Login.route){
             LoginScreen()
         }
-        composable(DestinagionScreen.Profile.route){
+        composable(DestinationScreen.Profile.route){
             ProfileScreen()
         }
-        composable(DestinagionScreen.SingleStatus.route){
+        composable(DestinationScreen.SingleStatus.route){
             SingleStatusScreen(statusId = "123")
         }
-        composable(DestinagionScreen.Chatlist.route){
+        composable(DestinationScreen.Chatlist.route){
             ChatListScreen()
         }
-        composable(DestinagionScreen.SingleChat.route){
+        composable(DestinationScreen.SingleChat.route){
             SingleChatScreen(chatId = "123")
         }
     }
