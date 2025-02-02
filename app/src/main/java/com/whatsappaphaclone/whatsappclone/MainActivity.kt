@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,6 +17,7 @@ import com.whatsappaphaclone.whatsappclone.ui.ProfileScreen
 import com.whatsappaphaclone.whatsappclone.ui.SignupScreen
 import com.whatsappaphaclone.whatsappclone.ui.SingleChatScreen
 import com.whatsappaphaclone.whatsappclone.ui.SingleStatusScreen
+import com.whatsappaphaclone.whatsappclone.ui.StatusListScreen
 import com.whatsappaphaclone.whatsappclone.ui.theme.WhatsappCloneTheme
 
 
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
 fun ChatAppNavigation(){
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = DestinationScreen.Signup.route){
+    NavHost(navController = navController, startDestination = DestinationScreen.Profile.route){
         composable(DestinationScreen.Signup.route){
             SignupScreen()
         }
@@ -60,13 +62,16 @@ fun ChatAppNavigation(){
             LoginScreen()
         }
         composable(DestinationScreen.Profile.route){
-            ProfileScreen()
+            ProfileScreen(navController = navController)
+        }
+        composable(DestinationScreen.StatusList.route){
+            StatusListScreen(navController = navController)
         }
         composable(DestinationScreen.SingleStatus.route){
             SingleStatusScreen(statusId = "123")
         }
         composable(DestinationScreen.Chatlist.route){
-            ChatListScreen()
+            ChatListScreen(navController = navController)
         }
         composable(DestinationScreen.SingleChat.route){
             SingleChatScreen(chatId = "123")
